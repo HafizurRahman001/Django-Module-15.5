@@ -1,0 +1,40 @@
+{%extends 'base.html' %}
+
+{%block content%}
+<div class="table_section container">
+    <h1 class='text-center my-4 text-danger'>Data displaying here</h1>
+    <div class="table-content">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Musician Name</th>
+                <th scope="col">Eamil</th>
+                <th scope="col">Album Ratings</th>
+                <th scope="col">Instrument Type</th>
+                <th scope="col">Album Name</th>
+                <th scope="col">Release Date</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+                {%for data in allData%}
+              <tr>
+                <th scope="row">{{data.id}}</th>
+                <td> <a href="{%url 'edit_musician' data.id %}">{{data.musician_name.first_name}} {{data.musician_name.last_name}}</a> </td>
+                <td> {{data.musician_name.email}} </td>
+                <td> {{data.ratings}} </td>
+                <td> {{data.musician_name.instrument_type}} </td>
+                <td> {{data.album_name}} </td>
+                <td> {{data.album_reels_date | date:"SHORT_DATE_FORMAT"}} </td>
+                <td>
+                    <a href="{% url 'edit_album' data.id %}"> <div class="btn btn-primary"><i class="bi bi-pencil-square"></i></div> </a>
+                    <a href="{% url 'delete_album' data.id %}"> <div class="btn btn-danger"><i class="bi bi-trash3"></i></div> </a>
+                </td>
+              </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+    </div>
+</div>
+{%endblock%}
