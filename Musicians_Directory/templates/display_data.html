@@ -21,7 +21,7 @@
                 {%for data in allData%}
               <tr>
                 <th scope="row">{{data.id}}</th>
-                <td> <a href="{%url 'edit_musician' data.id %}">{{data.musician_name.first_name}} {{data.musician_name.last_name}}</a> </td>
+                <td> <a href="{%url 'edit_musician' data.musician_name.id %}">{{data.musician_name.first_name}} {{data.musician_name.last_name}}</a> </td>
                 <td> {{data.musician_name.email}} </td>
                 <td> {{data.ratings}} </td>
                 <td> {{data.musician_name.instrument_type}} </td>
